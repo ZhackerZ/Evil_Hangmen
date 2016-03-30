@@ -1,0 +1,58 @@
+
+@Description
+  Web application designed to let the user play Evil Hangman. Refer to this link for more
+  information: http://nifty.stanford.edu/2011/schwarz-evil-hangman/. The link can also be
+  found in the Help page of our application.
+
+@Execution_Instructions
+  Run the following commands:
+    %bundle install
+    %rake db:migrate
+    %rake db:setup
+    %rails s
+  A server will now be running on localhost 3000 (http://0.0.0.0:3000/). Navigate
+  to this URL in a web browser.
+  
+  Simply follow along with the prompts in the application to play the game.
+  Refer to Help for rules of the game
+  Have the ability to create a user, view your statistics, and edit your profile.
+
+@File_Manifest
+	evil-hangman/
+    app/
+      controllers/
+        application_controller.rb   Standard generated app controller 
+        game_controller.rb          Initializes and step through the Evil Hangman algorithm     
+        sessions_controller.rb      Authenticates and remembers users
+        users_controller.rb         Used to perform REST/CRUD actions on the User model 
+      helpers/       
+        game_helper.rb              Helper functions to implement the Evil Hangman algorithm        
+        sessions_helper.rb          Added helper functons to authenticate and remember users
+        users_helper.rb             Helper functions to scrape gravatar image used for certain views
+      views/
+        home_pages/
+          about.html.erb            About page content       
+          help.html.erb             Help page content
+          home.html.erb             Home page where game can be played and most other pages reached
+        layouts/
+          _footer.html.erb          Generated footer
+          _header.html.erb          Generated header
+          application.html.erb      Geerated application view, entry point for our application
+        sessions/
+          new.html.erb              Log in page
+        users/
+          edit.html.erb             Edit user info page
+          index.html.erb            List of all users
+          new.html.erb              Create a new user page
+          show.html.erb             Show particular user page 
+      config/
+        routes.rb                   Route configurations
+      db/
+        seeds.rb                    Initial database setup
+      dictionaries/                 Individual word dictionaries (by word length) that are seeded
+      games/                        Individual game files that are created each game instance
+  
+@Authors
+  Suhas Gudhe, Joseph Hunt, Yuzhen Liu, Jun Wang, Edward (Ted) Zhu
+
+

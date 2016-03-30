@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>module GameHelper - Rails Application Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="module">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-max_evilHangman">#max_evilHangman</a>
+    
+    <li ><a href="#method-i-minMax_evilHangman">#minMax_evilHangman</a>
+    
+    <li ><a href="#method-i-min_evilHangman">#min_evilHangman</a>
+    
+    <li ><a href="#method-i-statistics">#statistics</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="module-GameHelper">
+  <h1 id="module-GameHelper" class="module">
+    module GameHelper
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-max_evilHangman" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">max_evilHangman</span><span
+            class="method-args">(family, left, depth, maxDepth)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="max_evilHangman-source">
+            <pre><span class="ruby-comment"># File app/helpers/game_helper.rb, line 171</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">max_evilHangman</span>(<span class="ruby-identifier">family</span>, <span class="ruby-identifier">left</span>, <span class="ruby-identifier">depth</span>, <span class="ruby-identifier">maxDepth</span>)
+
+        <span class="ruby-comment"># Base Case of final search level or single word remaining in dictionary</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">depth</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">family</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">family</span>.<span class="ruby-identifier">length</span>
+        <span class="ruby-keyword">else</span> 
+                <span class="ruby-comment"># Ensures children exist before expanding</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">family</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+                        <span class="ruby-comment"># map depth to left index</span>
+                        <span class="ruby-identifier">indexOfLeft</span> =  <span class="ruby-identifier">maxDepth</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">depth</span>
+                        <span class="ruby-comment"># view the letter</span>
+                        <span class="ruby-identifier">nextGuess</span> = <span class="ruby-identifier">left</span>[<span class="ruby-identifier">indexOfLeft</span>]
+                        <span class="ruby-comment"># build the current state</span>
+                        <span class="ruby-identifier">randomWord</span> = <span class="ruby-identifier">family</span>[<span class="ruby-value">0</span>]
+                        <span class="ruby-identifier">length</span> = <span class="ruby-identifier">randomWord</span>.<span class="ruby-identifier">length</span>
+                        <span class="ruby-identifier">currentState</span> = <span class="ruby-string">&quot;&quot;</span>
+                        <span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">currentState</span> <span class="ruby-operator">+=</span>  <span class="ruby-string">&quot;1&quot;</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-comment"># Generates a string containing the binary representative of the elements of the family</span>
+                        <span class="ruby-identifier">emptySlots</span> = <span class="ruby-value">0</span>
+                        <span class="ruby-identifier">left</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">leftChar</span> = <span class="ruby-identifier">left</span>[<span class="ruby-identifier">i</span>]
+                                <span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+                                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">leftChar</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">randomWord</span>[<span class="ruby-identifier">j</span>]
+                                                <span class="ruby-identifier">tempCurrentState</span> = <span class="ruby-identifier">randomWord</span>[<span class="ruby-value">0</span>,<span class="ruby-identifier">j</span>] <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">randomWord</span>[<span class="ruby-identifier">j</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">length</span><span class="ruby-operator">-</span>(<span class="ruby-identifier">j</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)]
+                                                <span class="ruby-identifier">currentState</span> = <span class="ruby-identifier">tempCurrentState</span>
+                                                <span class="ruby-identifier">emptySlots</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                                        <span class="ruby-keyword">end</span>
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">end</span>
+
+                        <span class="ruby-identifier">numberOfListOfFamilies</span> = <span class="ruby-value">2</span><span class="ruby-operator">**</span><span class="ruby-identifier">emptySlots</span>
+                        <span class="ruby-comment"># Initializes an array for storing the families</span>
+                        <span class="ruby-identifier">listOfFamilies</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">numberOfListOfFamilies</span>)
+                        
+                        <span class="ruby-comment"># Initializes each family</span>
+                        <span class="ruby-identifier">numberOfListOfFamilies</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                                        <span class="ruby-identifier">listOfFamilies</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>                             
+                        <span class="ruby-keyword">end</span>
+
+                        <span class="ruby-identifier">family</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">wordCheck</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">emptySlots</span>, <span class="ruby-value">0</span>)
+                                <span class="ruby-identifier">currentWord</span> = <span class="ruby-identifier">family</span>[<span class="ruby-identifier">i</span>]
+                                <span class="ruby-identifier">k</span> = <span class="ruby-value">0</span>
+                                <span class="ruby-comment"># Changes the word to an array of 1&#39;s and 0&#39;s for creation of binary number representing the changed letters</span>
+                                <span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+                                        <span class="ruby-comment"># Is empty character</span>
+                                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">currentState</span>[<span class="ruby-identifier">j</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">currentWord</span>[<span class="ruby-identifier">j</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">nextGuess</span>
+                                                        <span class="ruby-identifier">wordCheck</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-value">1</span>
+                                                <span class="ruby-keyword">end</span>
+                                                <span class="ruby-identifier">k</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                                        <span class="ruby-keyword">end</span>
+                                <span class="ruby-keyword">end</span>
+                                <span class="ruby-comment"># Binary string is used to identify the correct family into which the word should be added </span>
+                                <span class="ruby-comment"># (000 means no letters added, 111 means all letters added for 3 empty spaces in a word)</span>
+                                <span class="ruby-identifier">binary</span> = <span class="ruby-string">&quot;&quot;</span>
+                                <span class="ruby-identifier">emptySlots</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+                                        <span class="ruby-identifier">binary</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">wordCheck</span>[<span class="ruby-identifier">m</span>].<span class="ruby-identifier">to_s</span>
+                                <span class="ruby-keyword">end</span>
+                                <span class="ruby-comment"># Converts the binary number into a decimal that is mapped to an index of the arraylist</span>
+                                <span class="ruby-identifier">indexOfSet</span> = <span class="ruby-identifier">binary</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-value">2</span>) 
+                                <span class="ruby-comment"># Adds the word to the appropriate family</span>
+                                <span class="ruby-identifier">listOfFamilies</span>[<span class="ruby-identifier">indexOfSet</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">currentWord</span>)
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-comment"># puts listOfFamilies.inspect</span>
+                        <span class="ruby-comment"># call min to generate an array of scores that map to each element of the listOfFamilies</span>
+                        <span class="ruby-identifier">arrayOfScores</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">numberOfListOfFamilies</span>)
+                        <span class="ruby-identifier">arrayOfScores</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">arrayOfScores</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">min_evilHangman</span>(<span class="ruby-identifier">listOfFamilies</span>[<span class="ruby-identifier">i</span>], <span class="ruby-identifier">left</span>, <span class="ruby-identifier">depth</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>, <span class="ruby-identifier">maxDepth</span>)
+                        <span class="ruby-keyword">end</span>
+                                
+                        <span class="ruby-comment"># Finds the index of the family with the best score</span>
+                        <span class="ruby-identifier">maxScore</span> = <span class="ruby-value">0</span>
+                        <span class="ruby-identifier">arrayOfScores</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">arrayOfScores</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">maxScore</span>
+                                        <span class="ruby-identifier">maxScore</span> = <span class="ruby-identifier">arrayOfScores</span>[<span class="ruby-identifier">i</span>]
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-identifier">maxScore</span>
+                <span class="ruby-keyword">else</span> 
+                        <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>    
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-minMax_evilHangman" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">minMax_evilHangman</span><span
+            class="method-args">(length, depth, letter, state)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="minMax_evilHangman-source">
+            <pre><span class="ruby-comment"># File app/helpers/game_helper.rb, line 3</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">minMax_evilHangman</span>(<span class="ruby-identifier">length</span>, <span class="ruby-identifier">depth</span>, <span class="ruby-identifier">letter</span>, <span class="ruby-identifier">state</span>)
+        <span class="ruby-comment"># initialize array of words</span>
+        <span class="ruby-identifier">words</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">fileName</span> = <span class="ruby-string">&quot;games/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:game_session_id</span>] <span class="ruby-operator">+</span> <span class="ruby-string">&quot;.txt&quot;</span>
+        <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">fileName</span>,<span class="ruby-string">&quot;r&quot;</span>) 
+        <span class="ruby-identifier">firstLine</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">gets</span>
+        <span class="ruby-comment"># build left</span>
+        <span class="ruby-identifier">left</span> = <span class="ruby-identifier">firstLine</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot; &quot;</span>)
+        <span class="ruby-comment"># build words</span>
+        <span class="ruby-keyword">while</span> (<span class="ruby-identifier">line</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">gets</span>)
+                <span class="ruby-identifier">words</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">line</span>.<span class="ruby-identifier">chomp!</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-comment"># close the file</span>
+        <span class="ruby-comment">#file.close</span>
+        <span class="ruby-comment"># Boolean representing whether the game is still in progress based on number of guesses</span>
+        <span class="ruby-identifier">gameInProgress</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-comment"># Hash that maps lengths to their associated number of guesses</span>
+        <span class="ruby-identifier">lengthHash</span> = { <span class="ruby-value">3</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">15</span>, <span class="ruby-value">4</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">14</span>, <span class="ruby-value">5</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">13</span>, <span class="ruby-value">6</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">12</span>, <span class="ruby-value">7</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">11</span>, <span class="ruby-value">8</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">10</span>, <span class="ruby-value">9</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">9</span>, <span class="ruby-value">10</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">8</span>, <span class="ruby-value">11</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">7</span>, <span class="ruby-value">12</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">6</span>, <span class="ruby-value">13</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">6</span>, <span class="ruby-value">14</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">6</span>, <span class="ruby-value">15</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">6</span>}
+        <span class="ruby-comment"># Hash that maps length to number of words</span>
+        <span class="ruby-identifier">wordNumHash</span> = {<span class="ruby-value">3</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">962</span>, <span class="ruby-value">4</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3862</span>, <span class="ruby-value">5</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">8548</span>, <span class="ruby-value">6</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">14383</span>, <span class="ruby-value">7</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">21729</span>, <span class="ruby-value">8</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">26448</span>, <span class="ruby-value">9</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">18844</span>, <span class="ruby-value">10</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">12308</span>, <span class="ruby-value">11</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">7850</span>, <span class="ruby-value">12</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">5194</span>, <span class="ruby-value">13</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3275</span>, <span class="ruby-value">14</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1775</span>, <span class="ruby-value">15</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">945</span>}
+        <span class="ruby-comment"># Boolean representing whether the user has won or lost the game</span>
+        <span class="ruby-identifier">gameWon</span> = <span class="ruby-keyword">false</span>
+        <span class="ruby-identifier">maxDepth</span> = <span class="ruby-identifier">depth</span>
+        <span class="ruby-comment"># remove the user&#39;s guess from the remaining letters list</span>
+        <span class="ruby-identifier">left</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">letter</span>)
+
+        <span class="ruby-identifier">emptySlots</span> = <span class="ruby-value">0</span>;
+        <span class="ruby-comment"># initialize the current state</span>
+        <span class="ruby-identifier">currentState</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">length</span>)
+        <span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> 
+                <span class="ruby-identifier">temp</span> = <span class="ruby-identifier">state</span>[<span class="ruby-identifier">i</span>];
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">temp</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;_&quot;</span>
+                        <span class="ruby-identifier">currentState</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-value">1</span>         
+                <span class="ruby-keyword">else</span> 
+                        <span class="ruby-identifier">currentState</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-value">0</span>
+                        <span class="ruby-identifier">emptySlots</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>   
+        <span class="ruby-identifier">numberOfListOfFamilies</span> = <span class="ruby-value">2</span><span class="ruby-operator">**</span><span class="ruby-identifier">emptySlots</span>
+        <span class="ruby-comment"># Initializes an array for storing the families</span>
+        <span class="ruby-comment"># Two copies are created so that the algorithm can store the current word list for future algorithm calls</span>
+        <span class="ruby-identifier">listOfFamilies</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">numberOfListOfFamilies</span>)
+        <span class="ruby-identifier">copyOfListOfFamilies</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">numberOfListOfFamilies</span>)
+        
+        <span class="ruby-comment"># Initializes each family</span>
+        <span class="ruby-identifier">numberOfListOfFamilies</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">listOfFamilies</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>  
+                        <span class="ruby-identifier">copyOfListOfFamilies</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-comment"># Categorizes every word by format and adds the words to the appropriate family</span>
+        <span class="ruby-identifier">words</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">wordCheck</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">emptySlots</span>, <span class="ruby-value">0</span>)
+                <span class="ruby-comment">#puts wordCheck</span>
+                <span class="ruby-identifier">currentWord</span> = <span class="ruby-identifier">words</span>[<span class="ruby-identifier">i</span>]
+                <span class="ruby-identifier">k</span> = <span class="ruby-value">0</span>
+                <span class="ruby-comment"># Changes the word to an array of 1&#39;s and 0&#39;s for creation of binary number representing the changed letters</span>
+                <span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+                        <span class="ruby-comment"># Is empty character</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">currentState</span>[<span class="ruby-identifier">j</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">currentWord</span>[<span class="ruby-identifier">j</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">letter</span>
+                                        <span class="ruby-identifier">wordCheck</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-value">1</span>
+                                <span class="ruby-keyword">end</span>
+                                <span class="ruby-identifier">k</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+
+                <span class="ruby-comment"># Binary string is used to identify the correct family into which the word should be added </span>
+                <span class="ruby-comment"># (000 means no letters added, 111 means all letters added for 3 empty spaces in a word)</span>
+                <span class="ruby-identifier">binary</span> = <span class="ruby-string">&quot;&quot;</span>
+                <span class="ruby-identifier">emptySlots</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">binary</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">wordCheck</span>[<span class="ruby-identifier">m</span>].<span class="ruby-identifier">to_s</span>
+                <span class="ruby-keyword">end</span>
+                
+                <span class="ruby-comment"># Converts the binary number into a decimal that is mapped to an index of the arraylist</span>
+                <span class="ruby-identifier">indexOfSet</span> = <span class="ruby-identifier">binary</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-value">2</span>) 
+                <span class="ruby-comment"># Adds the word to the appropriate family</span>
+                <span class="ruby-identifier">listOfFamilies</span>[<span class="ruby-identifier">indexOfSet</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">currentWord</span>)
+                <span class="ruby-comment"># Creating copy</span>
+                <span class="ruby-identifier">copyOfListOfFamilies</span>[<span class="ruby-identifier">indexOfSet</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">currentWord</span>)
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-comment"># puts copyOfListOfFamilies.inspect</span>
+        
+        <span class="ruby-comment"># call max to generate an array of scores that map to each element of the listOfFamilies</span>
+        <span class="ruby-comment"># Used to find best family</span>
+        <span class="ruby-identifier">arrayOfScores</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">numberOfListOfFamilies</span>)
+        <span class="ruby-identifier">arrayOfScores</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">arrayOfScores</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">max_evilHangman</span>(<span class="ruby-identifier">listOfFamilies</span>[<span class="ruby-identifier">i</span>], <span class="ruby-identifier">left</span>, <span class="ruby-identifier">depth</span>, <span class="ruby-identifier">maxDepth</span>)
+        <span class="ruby-keyword">end</span>
+                
+        <span class="ruby-comment"># Finds the index of the family with the best score</span>
+        <span class="ruby-identifier">maxValue</span> = <span class="ruby-value">-1</span>
+        <span class="ruby-identifier">maxValueIndex</span> = <span class="ruby-value">-1</span>
+        <span class="ruby-identifier">arrayOfScores</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">arrayOfScores</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">maxValue</span>
+                        <span class="ruby-identifier">maxValue</span> = <span class="ruby-identifier">arrayOfScores</span>[<span class="ruby-identifier">i</span>]
+                        <span class="ruby-identifier">maxValueIndex</span> = <span class="ruby-identifier">i</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+
+
+
+        <span class="ruby-comment"># Obtain final return string by taking a random element of the family and converting non-guessed chars to _</span>
+        <span class="ruby-identifier">repWord</span> = <span class="ruby-identifier">listOfFamilies</span>[<span class="ruby-identifier">maxValueIndex</span>][<span class="ruby-value">0</span>]
+        <span class="ruby-identifier">left</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">leftChar</span> = <span class="ruby-identifier">left</span>[<span class="ruby-identifier">i</span>]
+                <span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">leftChar</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">repWord</span>[<span class="ruby-identifier">j</span>]
+                                <span class="ruby-identifier">tempCurrentState</span> = <span class="ruby-identifier">repWord</span>[<span class="ruby-value">0</span>,<span class="ruby-identifier">j</span>] <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">repWord</span>[<span class="ruby-identifier">j</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">length</span><span class="ruby-operator">-</span>(<span class="ruby-identifier">j</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)]
+                                <span class="ruby-identifier">repWord</span> = <span class="ruby-identifier">tempCurrentState</span>
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+
+
+        <span class="ruby-identifier">guessesRemaining</span> = <span class="ruby-identifier">lengthHash</span>[<span class="ruby-identifier">length</span>] <span class="ruby-operator">-</span> (<span class="ruby-value">26</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">left</span>.<span class="ruby-identifier">length</span>)
+        <span class="ruby-identifier">repWordArray</span> = <span class="ruby-identifier">repWord</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;&quot;</span>)
+
+        <span class="ruby-identifier">uniqueChars</span> = <span class="ruby-identifier">repWordArray</span>.<span class="ruby-identifier">uniq</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gameWon</span>
+                <span class="ruby-identifier">uniqueChars</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">guessesRemaining</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">uniqueChars</span>
+        <span class="ruby-comment"># Checks if there are any more guesses remaining</span>
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">guessesRemaining</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">gameInProgress</span> = <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+        
+        <span class="ruby-comment"># Checks if the user has won</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">repWord</span>.<span class="ruby-identifier">include?</span> <span class="ruby-string">&quot;_&quot;</span>)
+                <span class="ruby-identifier">gameInProgress</span> = <span class="ruby-keyword">false</span>
+                <span class="ruby-identifier">gameWon</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-comment"># puts &quot;Guesses Remaining = #{guessesRemaining}&quot;</span>
+        <span class="ruby-comment"># contains a string with all remaining letters</span>
+        <span class="ruby-identifier">remLetters</span> = <span class="ruby-identifier">left</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot; &quot;</span>)
+        <span class="ruby-identifier">remLetters</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;\n&quot;</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">gameInProgress</span>
+                <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">fileName</span>, <span class="ruby-string">&#39;w&#39;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">remLetters</span>)
+                        <span class="ruby-comment"># Writes all the words in the next set to the session file</span>
+                        <span class="ruby-identifier">copyOfListOfFamilies</span>[<span class="ruby-identifier">maxValueIndex</span>].<span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">tempWord</span> = <span class="ruby-identifier">copyOfListOfFamilies</span>[<span class="ruby-identifier">maxValueIndex</span>][<span class="ruby-identifier">i</span>] <span class="ruby-operator">+</span> <span class="ruby-string">&quot;\n&quot;</span>
+                                <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">tempWord</span>)
+                        <span class="ruby-keyword">end</span>
+                }
+                <span class="ruby-comment">#file.close</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">statistics</span>(<span class="ruby-identifier">length</span>, <span class="ruby-identifier">lengthHash</span>[<span class="ruby-identifier">length</span>],<span class="ruby-value">26</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">left</span>.<span class="ruby-identifier">length</span>, <span class="ruby-identifier">wordNumHash</span>[<span class="ruby-identifier">length</span>], <span class="ruby-identifier">copyOfListOfFamilies</span>[<span class="ruby-identifier">maxValueIndex</span>].<span class="ruby-identifier">length</span>, <span class="ruby-identifier">gameWon</span>, <span class="ruby-identifier">repWord</span>)
+                <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">fileName</span>)
+        <span class="ruby-keyword">end</span>
+
+        
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">state</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">repWord</span>
+                <span class="ruby-identifier">advance</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">advance</span> = <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span> 
+        <span class="ruby-identifier">returnValue</span> = [ <span class="ruby-identifier">repWord</span> , <span class="ruby-identifier">guessesRemaining</span> , <span class="ruby-identifier">gameWon</span> , <span class="ruby-identifier">advance</span>, <span class="ruby-identifier">letter</span>]
+        
+        <span class="ruby-comment"># returnValue = { success: , state: , guesses_left: , won: gameWon, picNum: }</span>
+        <span class="ruby-comment"># ret</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">returnValue</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-min_evilHangman" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">min_evilHangman</span><span
+            class="method-args">(family, left, depth, maxDepth)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="min_evilHangman-source">
+            <pre><span class="ruby-comment"># File app/helpers/game_helper.rb, line 258</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">min_evilHangman</span>(<span class="ruby-identifier">family</span>, <span class="ruby-identifier">left</span>, <span class="ruby-identifier">depth</span>, <span class="ruby-identifier">maxDepth</span>)
+
+        <span class="ruby-comment"># Base Case of final search level or single word remaining in dictionary</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">depth</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">family</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">family</span>.<span class="ruby-identifier">length</span>
+        <span class="ruby-keyword">else</span> 
+                <span class="ruby-comment"># Ensures children exist before expanding</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">family</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+                        <span class="ruby-comment"># map depth to left index</span>
+                        <span class="ruby-identifier">indexOfLeft</span> =  <span class="ruby-identifier">maxDepth</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">depth</span>
+                        <span class="ruby-comment"># view the letter</span>
+                        <span class="ruby-identifier">nextGuess</span> = <span class="ruby-identifier">left</span>[<span class="ruby-identifier">indexOfLeft</span>]
+                        <span class="ruby-comment"># build the current state</span>
+                        <span class="ruby-identifier">randomWord</span> = <span class="ruby-identifier">family</span>[<span class="ruby-value">0</span>]
+                        <span class="ruby-identifier">length</span> = <span class="ruby-identifier">randomWord</span>.<span class="ruby-identifier">length</span>
+                        <span class="ruby-identifier">currentState</span> = <span class="ruby-string">&quot;&quot;</span>
+                        <span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">currentState</span> <span class="ruby-operator">+=</span>  <span class="ruby-string">&quot;1&quot;</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-comment"># Generates a string containing the binary representative of the elements of the family</span>
+                        <span class="ruby-identifier">emptySlots</span> = <span class="ruby-value">0</span>
+                        <span class="ruby-identifier">left</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">leftChar</span> = <span class="ruby-identifier">left</span>[<span class="ruby-identifier">i</span>]
+                                <span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+                                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">leftChar</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">randomWord</span>[<span class="ruby-identifier">j</span>]
+                                                <span class="ruby-identifier">tempCurrentState</span> = <span class="ruby-identifier">randomWord</span>[<span class="ruby-value">0</span>,<span class="ruby-identifier">j</span>] <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">randomWord</span>[<span class="ruby-identifier">j</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">length</span><span class="ruby-operator">-</span>(<span class="ruby-identifier">j</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)]
+                                                <span class="ruby-identifier">currentState</span> = <span class="ruby-identifier">tempCurrentState</span>
+                                                <span class="ruby-identifier">emptySlots</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                                        <span class="ruby-keyword">end</span>
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">end</span>
+
+                        <span class="ruby-identifier">numberOfListOfFamilies</span> = <span class="ruby-value">2</span><span class="ruby-operator">**</span><span class="ruby-identifier">emptySlots</span>
+                        <span class="ruby-comment"># Initializes an array for storing the families</span>
+                        <span class="ruby-identifier">listOfFamilies</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">numberOfListOfFamilies</span>)
+                        
+                        <span class="ruby-comment"># Initializes each family</span>
+                        <span class="ruby-identifier">numberOfListOfFamilies</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                                        <span class="ruby-identifier">listOfFamilies</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>                             
+                        <span class="ruby-keyword">end</span>
+
+                        <span class="ruby-identifier">family</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">wordCheck</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">emptySlots</span>, <span class="ruby-value">0</span>)
+                                <span class="ruby-identifier">currentWord</span> = <span class="ruby-identifier">family</span>[<span class="ruby-identifier">i</span>]
+                                <span class="ruby-identifier">k</span> = <span class="ruby-value">0</span>
+                                <span class="ruby-comment"># Changes the word to an array of 1&#39;s and 0&#39;s for creation of binary number representing the changed letters</span>
+                                <span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+                                        <span class="ruby-comment"># Is empty character</span>
+                                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">currentState</span>[<span class="ruby-identifier">j</span>] <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">currentWord</span>[<span class="ruby-identifier">j</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">nextGuess</span>
+                                                        <span class="ruby-identifier">wordCheck</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-value">1</span>
+                                                <span class="ruby-keyword">end</span>
+                                                <span class="ruby-identifier">k</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                                        <span class="ruby-keyword">end</span>
+                                <span class="ruby-keyword">end</span>
+                                <span class="ruby-comment"># Binary string is used to identify the correct family into which the word should be added </span>
+                                <span class="ruby-comment"># (000 means no letters added, 111 means all letters added for 3 empty spaces in a word)</span>
+                                <span class="ruby-identifier">binary</span> = <span class="ruby-string">&quot;&quot;</span>
+                                <span class="ruby-identifier">emptySlots</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+                                        <span class="ruby-identifier">binary</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">wordCheck</span>[<span class="ruby-identifier">m</span>].<span class="ruby-identifier">to_s</span>
+                                <span class="ruby-keyword">end</span>
+                                <span class="ruby-comment"># Converts the binary number into a decimal that is mapped to an index of the arraylist</span>
+                                <span class="ruby-identifier">indexOfSet</span> = <span class="ruby-identifier">binary</span>.<span class="ruby-identifier">to_i</span>(<span class="ruby-value">2</span>) 
+                                <span class="ruby-comment"># Adds the word to the appropriate family</span>
+                                <span class="ruby-identifier">listOfFamilies</span>[<span class="ruby-identifier">indexOfSet</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">currentWord</span>)
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-comment"># puts listOfFamilies.inspect</span>
+                        <span class="ruby-comment"># call min to generate an array of scores that map to each element of the listOfFamilies</span>
+                        <span class="ruby-identifier">arrayOfScores</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">numberOfListOfFamilies</span>)
+                        <span class="ruby-identifier">arrayOfScores</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">arrayOfScores</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">min_evilHangman</span>(<span class="ruby-identifier">listOfFamilies</span>[<span class="ruby-identifier">i</span>], <span class="ruby-identifier">left</span>, <span class="ruby-identifier">depth</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>, <span class="ruby-identifier">maxDepth</span>)
+                        <span class="ruby-keyword">end</span>
+                                
+                        <span class="ruby-comment"># Finds the index of the family with the best score</span>
+                        <span class="ruby-identifier">minScore</span> = <span class="ruby-value">2000000000</span>
+                        <span class="ruby-identifier">arrayOfScores</span>.<span class="ruby-identifier">length</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">arrayOfScores</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">minScore</span>
+                                        <span class="ruby-identifier">minScore</span> = <span class="ruby-identifier">arrayOfScores</span>[<span class="ruby-identifier">i</span>]
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-identifier">minScore</span>
+                <span class="ruby-keyword">else</span> 
+                        <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>    
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-statistics" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">statistics</span><span
+            class="method-args">(length, guessesAllowed, guessesUsed, initialWordNumber, wordsRemaining, gameWon, finalState)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="statistics-source">
+            <pre><span class="ruby-comment"># File app/helpers/game_helper.rb, line 345</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">statistics</span>(<span class="ruby-identifier">length</span>, <span class="ruby-identifier">guessesAllowed</span>, <span class="ruby-identifier">guessesUsed</span>, <span class="ruby-identifier">initialWordNumber</span>, <span class="ruby-identifier">wordsRemaining</span>, <span class="ruby-identifier">gameWon</span>, <span class="ruby-identifier">finalState</span>)
+        <span class="ruby-identifier">s</span> = <span class="ruby-constant">Stat</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">user_id</span> = <span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>]
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">word_length</span> = <span class="ruby-identifier">length</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">number_guesses_allowed</span> = <span class="ruby-identifier">guessesAllowed</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">number_guesses</span> = <span class="ruby-identifier">guessesUsed</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">number_initial_words</span> = <span class="ruby-identifier">initialWordNumber</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">number_words_left</span> = <span class="ruby-identifier">wordsRemaining</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">won</span> = <span class="ruby-identifier">gameWon</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">final_state</span> = <span class="ruby-identifier">finalState</span>
+        <span class="ruby-identifier">s</span>.<span class="ruby-identifier">save</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

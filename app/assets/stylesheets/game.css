@@ -1,0 +1,87 @@
+/*  Game Styles  */
+
+#game {
+	width: 700px;
+	height: 350px;
+	border: 2px solid #05a;
+	margin: 20px auto;
+	padding: 15px;
+	font-family: Arial, sans-serif;
+	border-radius: 4px;
+}
+
+#game #title, #game #subtitle {
+	text-align: center;
+}
+
+#game #title {
+
+}
+
+#game #subtitle {
+	margin-bottom: 40px;
+}
+
+#game #lengthInput {
+	text-align: center;
+}
+
+#game #lengthInput input {
+	width: 160px;
+}
+
+#game .word_length_button {
+	padding: 5px 10px;
+	margin: 5px;
+}
+
+#game #gameBoard {
+	text-align: center;
+	width: 400px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#game #guessInput {
+	width: 50px;
+}
+
+#game #letters {
+	text-align: center;
+	font-size: 26px;
+	letter-spacing: 3px;
+	margin: 10px;
+	margin-bottom: 30px;
+}
+
+#game #message {
+	
+}
+
+#game #message.completed {
+	font-size: 26px;
+	margin: 10px;
+	font-weight: bold;
+}
+
+#game #message.won {
+	color: green;
+}
+
+#game #message.lost {
+	color: red;
+}
+
+#game #lettersUsed {
+	width: 300px;
+	font-size: 18px;
+	letter-spacing: 10px;
+	margin: 20px auto;
+}
+
+#game #hangman {
+	display: inline-block;
+	border: 1px solid #ddd;
+	width: 193px;
+	height: 316px;
+}

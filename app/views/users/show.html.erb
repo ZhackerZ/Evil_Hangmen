@@ -1,0 +1,18 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+        <%= @statistics %>
+      </h1>
+    </section>
+    <section class="user_stats">
+    	<p>Games Played: <%= @total_games%></p>
+        <p>Games Won: <%= @games_won%></p>
+        <p>Win Percentage: %<%= ((@games_won*100.0)/@total_games).round(2) %></p>
+        <p>Games Lost: <%= @games_lost%></p>
+    </section>
+  </aside>
+</div>
